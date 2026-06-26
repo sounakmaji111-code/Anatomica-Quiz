@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anatomica Fun Anatomy Adventure Quiz">
+    <title>Anatomy Adventure | Anatomica</title>
+    
+    <!-- Friendly, bouncy, premium font perfect for all ages -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- INTERACTIVE FLOATING BACK BUTTON -->
+    <button id="btn-global-back" class="global-back-btn" type="button" aria-label="Go Back">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Back to Home</span>
+    </button>
+
+    <!-- MAIN APP WRAPPER -->
+    <main class="app-viewport" id="main-content">
+
+        <!-- ========================================================
+             VIEW 1: WELCOME & FUN SETUP
+             ======================================================== -->
+        <section id="view-welcome" class="viewport-screen active-screen" aria-labelledby="welcome-heading">
+            <div class="welcome-panel glass-card">
+                <div class="panel-hero">
+                    <span class="fun-badge">🌟 Discover Your Body</span>
+                    <h1 id="welcome-heading" class="hero-title">
+                        The Great <span class="text-gradient">Anatomy Adventure!</span>
+                    </h1>
+                    <p class="hero-description">
+                        Get ready to explore the amazing human body! Test your knowledge with a fun, fast-paced trivia challenge perfect for explorers of all ages.
+                    </p>
+                </div>
+
+                <div class="fun-parameters">
+                    <div class="param-card">
+                        <div class="param-icon">🎯</div>
+                        <span class="param-value">20</span>
+                        <span class="param-label">Quick Questions</span>
+                        <p class="param-sub">A fresh mix every single time you play!</p>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-icon">⏱️</div>
+                        <span class="param-value">20s</span>
+                        <span class="param-label">Action Timer</span>
+                        <p class="param-sub">Can you beat the clock? Think fast!</p>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-icon">💡</div>
+                        <span class="param-value">4</span>
+                        <span class="param-label">Multiple Choice</span>
+                        <p class="param-sub">Pick the best answer and learn fun facts.</p>
+                    </div>
+                </div>
+
+                <div class="configuration-box">
+                    <div class="config-row">
+                        <label for="testing-mode-select" class="config-label">
+                            <span class="label-primary">Choose Your Play Style:</span>
+                            <span class="label-secondary">How do you want to experience the adventure?</span>
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="testing-mode-select" class="ui-dropdown">
+                                <option value="formative">Learn & Play (See answers & fun facts instantly!)</option>
+                                <option value="summative">Challenge Mode (Save the suspense for the end!)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="launch-sequence">
+                    <button id="btn-initialize-test" class="btn-primary-action bounce-hover" type="button">
+                        <span>Start Adventure! 🚀</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             VIEW 2: THE ACTIVE GAME BOARD
+             ======================================================== -->
+        <section id="view-assessment" class="viewport-screen" aria-labelledby="assessment-heading">
+            <h2 id="assessment-heading" class="sr-only">Active Game Board</h2>
+            <div class="assessment-panel glass-card">
+                
+                <div class="assessment-hud">
+                    <div class="hud-progress-meta">
+                        <span class="hud-counter">Question <strong id="current-q-num" class="text-gradient">1</strong> of 20</span>
+                        
+                        <div class="hud-timer-badge" id="hud-timer-badge">
+                            <span class="timer-icon">⏱️</span>
+                            <span class="timer-readout" id="timer-readout">20s</span>
+                        </div>
+
+                        <span class="hud-protocol" id="hud-mode-display">Learn & Play</span>
+                    </div>
+                    <div class="hud-progress-track">
+                        <div class="hud-progress-fill" id="hud-progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="20"></div>
+                    </div>
+                </div>
+
+                <div class="stem-container">
+                    <span class="system-badge" id="hud-system-badge">Category</span>
+                    <p class="question-stem" id="question-stem-text">Loading your question...</p>
+                </div>
+
+                <div class="options-matrix" id="options-matrix" role="radiogroup"></div>
+
+                <div class="rationale-drawer" id="rationale-drawer" aria-live="polite">
+                    <div class="drawer-header">
+                        <span class="verdict-pill" id="verdict-pill">Awesome!</span>
+                        <span class="drawer-label">🧠 Did You Know?</span>
+                    </div>
+                    <p class="rationale-body" id="rationale-text"></p>
+                </div>
+
+                <div class="interaction-controls">
+                    <button id="btn-submit-answer" class="btn-secondary-action" disabled>Lock It In!</button>
+                    <button id="btn-next-item" class="btn-primary-action bounce-hover hidden">Next Question ➡️</button>
+                    <button id="btn-finalize-exam" class="btn-danger-action bounce-hover hidden">See My Results! 🎉</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================
+             VIEW 3: THE WINNER'S CIRCLE (RESULTS)
+             ======================================================== -->
+        <section id="view-analytics" class="viewport-screen" aria-labelledby="analytics-heading">
+            <div class="analytics-panel glass-card">
+                <div class="analytics-header">
+                    <span class="completion-stamp">Adventure Complete! 🏆</span>
+                    <h2 id="analytics-heading" class="analytics-title">Your Scoreboard</h2>
+                    <p class="analytics-subtitle">Let's see how much you know about the amazing human body!</p>
+                </div>
+
+                <div class="score-showcase">
+                    <div class="score-ring-container">
+                        <div class="raw-score-display">
+                            <span class="score-number text-gradient" id="final-raw-score">--</span>
+                            <span class="score-divisor">/ 20</span>
+                        </div>
+                    </div>
+                    <div class="score-narrative">
+                        <h3 id="mastery-tier-title">Calculating...</h3>
+                        <p id="mastery-tier-desc">Adding up your awesome brain power.</p>
+                    </div>
+                </div>
+
+                <h3 class="breakdown-title">Your Top Body Systems:</h3>
+                <div class="systemic-breakdown-grid" id="systemic-breakdown-grid"></div>
+
+                <div class="debrief-controls">
+                    <button id="btn-restart-exam" class="btn-primary-action bounce-hover" type="button">Play Again! 🔄</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
