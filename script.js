@@ -1,3 +1,5 @@
+(() => {
+
 /* ==========================================================================
    1. STATE ENGINE & DOM SELECTORS
    ========================================================================== */
@@ -1324,3 +1326,5 @@ DOM.controls.globalBack.addEventListener('click', () => {
 });
 
 window.addEventListener('beforeunload', () => clearInterval(AppState.timer));
+})();
+
