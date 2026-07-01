@@ -162,9 +162,10 @@ button, select { font: inherit; color: inherit; }
     border-color: var(--clr-primary);
     background: #f3e8ff;
     box-shadow: 0 6px 15px rgba(139, 92, 246, 0.25);
-    transform: scale(1.03);
 }
-
+.level-card:hover { transform: translateY(-3px); }
+.level-card[aria-checked="true"] { transform: translateY(-3px); }
+.level-card[aria-checked="true"]:hover { transform: translateY(-3px); }
 .level-icon { font-size: 2rem; }
 .level-name { font-weight: 900; font-size: 1.05rem; color: var(--clr-text-main); }
 .level-desc { font-size: 0.85rem; font-weight: 600; color: var(--clr-text-muted); }
