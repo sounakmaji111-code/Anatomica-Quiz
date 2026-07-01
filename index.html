@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Anatomica Fun Anatomy Adventure Quiz">
     <title>Anatomy Adventure | Anatomica</title>
-    
+
     <!-- Friendly, bouncy, premium font perfect for all ages -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -60,6 +60,33 @@
                     </div>
                 </div>
 
+                <!-- NEW: DIFFICULTY LEVEL SELECTION -->
+                <div class="configuration-box">
+                    <div class="config-row config-row--stacked">
+                        <label class="config-label">
+                            <span class="label-primary">Choose Your Challenge Level:</span>
+                            <span class="label-secondary">Pick the difficulty that fits your explorer rank!</span>
+                        </label>
+                        <div class="level-select-grid" id="level-select-grid" role="radiogroup" aria-label="Difficulty level">
+                            <button type="button" class="level-card" data-level="kids" aria-checked="true" role="radio">
+                                <span class="level-icon">🧒</span>
+                                <span class="level-name">Kids</span>
+                                <span class="level-desc">Fun & easy basics</span>
+                            </button>
+                            <button type="button" class="level-card" data-level="highschool" aria-checked="false" role="radio">
+                                <span class="level-icon">🎒</span>
+                                <span class="level-name">High Schooler</span>
+                                <span class="level-desc">A bigger challenge</span>
+                            </button>
+                            <button type="button" class="level-card" data-level="advanced" aria-checked="false" role="radio">
+                                <span class="level-icon">🎓</span>
+                                <span class="level-name">Advanced</span>
+                                <span class="level-desc">Graduate-level depth</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="configuration-box">
                     <div class="config-row">
                         <label for="testing-mode-select" class="config-label">
@@ -89,11 +116,11 @@
         <section id="view-assessment" class="viewport-screen" aria-labelledby="assessment-heading">
             <h2 id="assessment-heading" class="sr-only">Active Game Board</h2>
             <div class="assessment-panel glass-card">
-                
+
                 <div class="assessment-hud">
                     <div class="hud-progress-meta">
                         <span class="hud-counter">Question <strong id="current-q-num" class="text-gradient">1</strong> of 20</span>
-                        
+
                         <div class="hud-timer-badge" id="hud-timer-badge">
                             <span class="timer-icon">⏱️</span>
                             <span class="timer-readout" id="timer-readout">20s</span>
