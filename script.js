@@ -188,10 +188,11 @@ function renderActiveCard() {
 
 function selectOption(idx, btn) {
     if (AppState.isLocked) return;
-    DOM.stage.matrix.querySelectorAll('.quiz-option').forEach(b => {
-        b.classList.remove('selected');
-        b.setAttribute('aria-checked', 'false');
-    });
+    const prevSelected = DOM.stage.matrix.querySelector('.quiz-option.selected');
+    if (prevSelected && prevSelected !== btn) {
+        prevSelected.classList.remove('selected');
+        prevSelected.setAttribute('aria-checked', 'false');
+    }
     btn.classList.add('selected');
     btn.setAttribute('aria-checked', 'true');
     AppState.selectedOption = idx;
