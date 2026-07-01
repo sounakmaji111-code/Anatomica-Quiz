@@ -1887,9 +1887,7 @@ const QUESTION_BANK = {
     
 };
 
-/* ==========================================================================
-   7. APP LAUNCHER & DOM BINDINGS
-   ========================================================================== */
+
 DOM.controls.initBtn.addEventListener('click', initializeAssessment);
 DOM.controls.submitBtn.addEventListener('click', submitAnswer);
 DOM.controls.nextBtn.addEventListener('click', advanceItem);
@@ -1902,7 +1900,5 @@ DOM.controls.globalBack.addEventListener('click', () => {
 });
 
 window.addEventListener('beforeunload', () => clearInterval(AppState.timer));
-
-})();
 
 })();
